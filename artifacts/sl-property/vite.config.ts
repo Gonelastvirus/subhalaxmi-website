@@ -66,6 +66,13 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
+    proxy: {
+      "/api": {
+        target: "https://replit-sample-app-draft.onrender.com",
+        changeOrigin: true,
+        secure: true,
+      },
+    },
   },
   preview: {
     port,
