@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Subhalaxmi Property & Construction"
+version = "1.0.0"
+id = "artifacts/sl-property"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 22120
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/sl-property run dev"
+
+[services.env]
+PORT = "22120"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/sl-property", "run", "build"]
+publicDir = "artifacts/sl-property/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"

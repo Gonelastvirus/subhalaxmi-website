@@ -21,7 +21,8 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 ```text
 artifacts-monorepo/
 ├── artifacts/              # Deployable applications
-│   └── api-server/         # Express API server
+│   ├── api-server/         # Express API server
+│   └── sl-property/        # Subhalaxmi Property & Construction website (React + Vite)
 ├── lib/                    # Shared libraries
 │   ├── api-spec/           # OpenAPI spec + Orval codegen config
 │   ├── api-client-react/   # Generated React Query hooks
@@ -34,6 +35,27 @@ artifacts-monorepo/
 ├── tsconfig.json           # Root TS project references
 └── package.json            # Root package with hoisted devDeps
 ```
+
+## Artifacts
+
+### `artifacts/sl-property` — Subhalaxmi Property & Construction Website
+
+Display-only real estate showcase website for Nepal. Primary goal is to drive users to download the mobile APK.
+
+- **Preview path**: `/` (root)
+- **Design**: Light soft luxury feel — off-white, warm browns, soft gold accents
+- **Sections**: Hero, Property Listings, Construction Services, About, APK Download CTA, Footer
+- **Key behavior**: Clicking any property shows a "Download App" modal (no detail pages)
+- **APK URL**: Set `APK_URL` constant in `src/lib/constants.ts`
+- **Frontend packages**: framer-motion, react-helmet-async, clsx, tailwind-merge
+
+### `artifacts/api-server` — Express API Server
+
+Express 5 API server with mock data for properties, services, and about.
+
+- **Routes**: `/api/properties`, `/api/services`, `/api/about`, `/api/healthz`
+- **Data**: Mock seed data (no database required for this app)
+- **Phone masking**: Service phone numbers are masked (first 2 + **** + last 3 digits)
 
 ## TypeScript & Composite Projects
 
@@ -52,45 +74,35 @@ Every package extends `tsconfig.base.json` which sets `composite: true`. The roo
 
 ### `artifacts/api-server` (`@workspace/api-server`)
 
-Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` for request and response validation and `@workspace/db` for persistence.
+Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` for request and response validation.
 
 - Entry: `src/index.ts` — reads `PORT`, starts Express
-- App setup: `src/app.ts` — mounts CORS, JSON/urlencoded parsing, routes at `/api`
-- Routes: `src/routes/index.ts` mounts sub-routers; `src/routes/health.ts` exposes `GET /health` (full path: `/api/health`)
-- Depends on: `@workspace/db`, `@workspace/api-zod`
+- Routes: `/api/healthz`, `/api/properties`, `/api/services`, `/api/about`
+- All data is mock/in-memory (no DB needed)
 - `pnpm --filter @workspace/api-server run dev` — run the dev server
-- `pnpm --filter @workspace/api-server run build` — production esbuild bundle (`dist/index.cjs`)
-- Build bundles an allowlist of deps (express, cors, pg, drizzle-orm, zod, etc.) and externalizes the rest
+
+### `artifacts/sl-property` (`@workspace/sl-property`)
+
+React + Vite website for Subhalaxmi Property & Construction.
+
+- Single-page app with smooth scroll to sections
+- APK URL can be updated in `src/lib/constants.ts`
+- Fetches from `/api/properties`, `/api/services`, `/api/about`
 
 ### `lib/db` (`@workspace/db`)
 
 Database layer using Drizzle ORM with PostgreSQL. Exports a Drizzle client instance and schema models.
 
-- `src/index.ts` — creates a `Pool` + Drizzle instance, exports schema
-- `src/schema/index.ts` — barrel re-export of all models
-- `src/schema/<modelname>.ts` — table definitions with `drizzle-zod` insert schemas (no models definitions exist right now)
-- `drizzle.config.ts` — Drizzle Kit config (requires `DATABASE_URL`, automatically provided by Replit)
-- Exports: `.` (pool, db, schema), `./schema` (schema only)
-
-Production migrations are handled by Replit when publishing. In development, we just use `pnpm --filter @workspace/db run push`, and we fallback to `pnpm --filter @workspace/db run push-force`.
-
 ### `lib/api-spec` (`@workspace/api-spec`)
 
-Owns the OpenAPI 3.1 spec (`openapi.yaml`) and the Orval config (`orval.config.ts`). Running codegen produces output into two sibling packages:
-
-1. `lib/api-client-react/src/generated/` — React Query hooks + fetch client
-2. `lib/api-zod/src/generated/` — Zod schemas
+Owns the OpenAPI 3.1 spec (`openapi.yaml`) and the Orval config (`orval.config.ts`).
 
 Run codegen: `pnpm --filter @workspace/api-spec run codegen`
 
 ### `lib/api-zod` (`@workspace/api-zod`)
 
-Generated Zod schemas from the OpenAPI spec (e.g. `HealthCheckResponse`). Used by `api-server` for response validation.
+Generated Zod schemas from the OpenAPI spec.
 
 ### `lib/api-client-react` (`@workspace/api-client-react`)
 
-Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHealthCheck`, `healthCheck`).
-
-### `scripts` (`@workspace/scripts`)
-
-Utility scripts package. Each script is a `.ts` file in `src/` with a corresponding npm script in `package.json`. Run scripts via `pnpm --filter @workspace/scripts run <script>`. Scripts can import any workspace package (e.g., `@workspace/db`) by adding it as a dependency in `scripts/package.json`.
+Generated React Query hooks and fetch client from the OpenAPI spec.

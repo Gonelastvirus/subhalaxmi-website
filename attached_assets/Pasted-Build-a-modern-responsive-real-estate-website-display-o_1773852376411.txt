@@ -1,0 +1,278 @@
+Build a modern, responsive real estate website (display-only) for a platform called:
+
+"Subhalaxmi Property & Construction" (SL Property & Construction)
+
+Build entire site as a Flask app (Python) with Jinja2 templates and vanilla JavaScript. it just frontend matter rest is just api fetch so we dont need full dynamic site. Feed every seo elements and meta data so that users can find it easly with google search.
+
+🎯 Purpose
+
+This website is NOT a full service platform.
+
+Users can ONLY:
+
+View properties
+
+View construction services
+
+Read about the company
+
+All actions (buy, sell, contact) are handled through the mobile app
+
+👉 The website’s main goal is to push users to download the APK
+
+⚡ Key UX Requirement (VERY IMPORTANT)
+
+Every page must strongly promote:
+
+👉 "Download Our App"
+
+Sticky header button
+
+Hero section CTA
+
+Popup on property click
+
+Footer download section
+
+🎨 Design Theme
+
+Clean modern real estate UI
+
+Light + soft luxury feel
+
+Colors:
+
+White / Off-white
+
+Light brown / wooden tone
+
+Soft gold accent
+
+Rounded cards (2xl)
+
+Smooth hover effects
+
+Minimal but premium feel
+
+
+📱 Pages & Sections
+1. 🏠 Home Page
+Hero Section
+
+Big title:
+
+“Find Your Dream Property in Nepal”
+
+Subtitle:
+
+“Buy, Sell & Construction Services — All in One App”
+
+Buttons:
+
+✅ Download APK (PRIMARY, highlighted)
+
+Browse Properties
+
+2. 🏢 Property Listings Section
+
+Grid layout (cards)
+
+Each card shows:
+
+Image
+
+Title
+
+District
+
+Price (NPR)
+
+Property type
+
+Bedrooms
+
+⚠️ IMPORTANT BEHAVIOR
+
+When user clicks a property:
+
+👉 Show modal:
+
+“To view full details and contact owner, please download our app.”
+
+With:
+
+Download APK button
+
+Close button
+
+3. 🛠️ Construction Services Section
+
+Cards for:
+
+Plumber
+
+Electrician
+
+Builders
+
+Show:
+
+Business name
+
+Service type
+
+District
+
+Phone (blurred or partial)
+
+👉 Add note:
+
+“Contact available inside mobile app”
+
+4. 🧾 About Section
+
+Fetch from DB:
+
+Mission
+
+Vision
+
+Contact
+
+Address
+
+Social links
+
+Hero Section (MOST IMPORTANT)
+
+Title:
+Find Your Dream Property in Nepal
+
+Subtitle:
+Buy, Sell & Construction Services — All in One App
+
+Buttons:
+
+🚀 Download APK (PRIMARY, large, eye-catching)
+
+Browse Properties
+
+5. 📥 APK Download Section (VERY PROMINENT)
+
+Big centered section
+
+Title:
+
+“Get Full Access on Mobile App”
+
+Description:
+
+“Chat, Book Services, Post Properties & More”
+
+Button:
+
+🚀 Download APK
+Source of APK
+
+Use a constant download URL from GitHub Releases:
+
+const APK_URL = "https://github.com/<your-repo>/releases/latest/download/app.apk";
+i will add this url in code later during deployment.
+
+This URL always points to the latest version
+
+Do NOT fetch from backend
+
+Do NOT implement upload system
+
+Keep it simple
+
+6. 📞 Footer
+
+Company info
+
+Social links
+
+Contact details
+
+Download APK again
+
+🔌 Backend Integration
+
+Fetch data from API (Express backend)
+
+Endpoints (assume):
+
+/api/properties
+Already returns approved listings only
+
+Supports filters:
+
+district
+
+listingType
+
+propertyType
+
+minPrice
+
+maxPrice
+
+bedrooms
+
+limit
+
+offset
+
+GET /api/services
+
+Optional filters:
+
+district
+
+serviceType
+
+Display:
+
+business_name
+
+service_type
+
+district
+
+description
+
+phone → ⚠️ MASK (e.g. 98****603)
+
+GET /api/about
+
+Display:
+
+Mission
+
+Vision
+
+Contact phone
+
+Contact email
+
+Address
+
+Social links
+
+
+Data Protection Rules
+
+NEVER expose:
+
+ownerPhone
+
+ownerWhatsapp
+
+Always mask:
+
+Service phone numbers
+
+The website should act as:
+
+💡 A premium showcase that converts visitors into mobile app users

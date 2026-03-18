@@ -1,0 +1,21 @@
+packages:
+  "framer-motion": "Required for premium page transitions, scroll reveals, and micro-interactions"
+  "react-helmet-async": "Required for setting SEO meta tags and Open Graph data for the single page app"
+  "clsx": "Utility for conditionally merging Tailwind classes"
+  "tailwind-merge": "Utility for merging Tailwind classes safely without style conflicts"
+
+images:
+  - path: "artifacts/sl-property/public/images/hero-bg.png"
+    description: "Luxury modern real estate architecture exterior, warm sunset lighting, photorealistic architectural photography, clear sky, high end property"
+    aspect_ratio: "16:9"
+  - path: "artifacts/sl-property/public/images/logo.png"
+    description: "Minimalist elegant geometric luxury real estate logo mark, gold and deep brown on a transparent background, flat vector design"
+    aspect_ratio: "1:1"
+  - path: "artifacts/sl-property/public/images/app-mockup.png"
+    description: "Abstract floating smartphone displaying a modern real estate app UI, luxury minimal design, gold accents, isometric 3d render on a transparent background"
+    aspect_ratio: "3:4"
+
+notes:
+  - Using generated API hooks from @workspace/api-client-react for properties, services, and about endpoints
+  - The API returns mock data; images in properties will use placeholder Unsplash URLs if the DB imageUrl is empty
+  - App is structured as a smooth single-page scrolling site to maximize APK conversion

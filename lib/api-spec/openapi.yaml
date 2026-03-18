@@ -1,15 +1,20 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Subhalaxmi Property & Construction API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: properties
+    description: Property listings
+  - name: services
+    description: Construction services
+  - name: about
+    description: Company information
 paths:
   /healthz:
     get:
@@ -24,6 +29,94 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /properties:
+    get:
+      operationId: getProperties
+      tags: [properties]
+      summary: Get property listings
+      description: Returns approved property listings with optional filters
+      parameters:
+        - name: district
+          in: query
+          schema:
+            type: string
+        - name: listingType
+          in: query
+          schema:
+            type: string
+            enum: [sale, rent]
+        - name: propertyType
+          in: query
+          schema:
+            type: string
+        - name: minPrice
+          in: query
+          schema:
+            type: number
+        - name: maxPrice
+          in: query
+          schema:
+            type: number
+        - name: bedrooms
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 12
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        "200":
+          description: List of properties
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PropertiesResponse"
+
+  /services:
+    get:
+      operationId: getServices
+      tags: [services]
+      summary: Get construction services
+      description: Returns list of construction service providers
+      parameters:
+        - name: district
+          in: query
+          schema:
+            type: string
+        - name: serviceType
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of services
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServicesResponse"
+
+  /about:
+    get:
+      operationId: getAbout
+      tags: [about]
+      summary: Get company information
+      description: Returns company mission, vision, contact and social links
+      responses:
+        "200":
+          description: Company information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AboutResponse"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +127,141 @@ components:
       required:
         - status
 
+    Property:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        district:
+          type: string
+        price:
+          type: number
+        priceUnit:
+          type: string
+        propertyType:
+          type: string
+        listingType:
+          type: string
+          enum: [sale, rent]
+        bedrooms:
+          type: integer
+        area:
+          type: string
+        imageUrl:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+      required:
+        - id
+        - title
+        - district
+        - price
+        - priceUnit
+        - propertyType
+        - listingType
+        - bedrooms
+        - area
+        - imageUrl
+        - description
+        - location
+
+    PropertiesResponse:
+      type: object
+      properties:
+        properties:
+          type: array
+          items:
+            $ref: "#/components/schemas/Property"
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+      required:
+        - properties
+        - total
+        - offset
+        - limit
+
+    Service:
+      type: object
+      properties:
+        id:
+          type: string
+        businessName:
+          type: string
+        serviceType:
+          type: string
+        district:
+          type: string
+        description:
+          type: string
+        phone:
+          type: string
+        experience:
+          type: string
+        rating:
+          type: number
+      required:
+        - id
+        - businessName
+        - serviceType
+        - district
+        - description
+        - phone
+
+    ServicesResponse:
+      type: object
+      properties:
+        services:
+          type: array
+          items:
+            $ref: "#/components/schemas/Service"
+        total:
+          type: integer
+      required:
+        - services
+        - total
+
+    SocialLinks:
+      type: object
+      properties:
+        facebook:
+          type: string
+        instagram:
+          type: string
+        youtube:
+          type: string
+        twitter:
+          type: string
+
+    AboutResponse:
+      type: object
+      properties:
+        mission:
+          type: string
+        vision:
+          type: string
+        contactPhone:
+          type: string
+        contactEmail:
+          type: string
+        address:
+          type: string
+        establishedYear:
+          type: string
+        socialLinks:
+          $ref: "#/components/schemas/SocialLinks"
+      required:
+        - mission
+        - vision
+        - contactPhone
+        - contactEmail
+        - address
+        - establishedYear
+        - socialLinks
