@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HardHat, Star, MapPin, Phone, CheckCircle2 } from 'lucide-react';
+import { HardHat, MapPin, Phone, CheckCircle2 } from 'lucide-react';
 import { useGetServices } from '@workspace/api-client-react';
 import { setDownloadModalOpen } from '@/hooks/use-app-state';
 import { maskPhone } from '@/lib/constants';
@@ -52,12 +52,6 @@ export function ServicesSection() {
                       {service.businessName}
                     </h3>
                   </div>
-                  {service.rating && (
-                    <div className="flex items-center gap-1 text-sm font-bold bg-yellow-100 text-yellow-800 px-2 py-1 rounded-lg">
-                      <Star className="w-3.5 h-3.5 fill-current" />
-                      {service.rating}
-                    </div>
-                  )}
                 </div>
 
                 <p className="text-muted-foreground text-sm line-clamp-2 mb-6 flex-1">

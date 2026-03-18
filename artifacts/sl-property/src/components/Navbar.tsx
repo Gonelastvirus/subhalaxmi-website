@@ -39,7 +39,7 @@ export function Navbar() {
             />
           </div>
           <span className={`font-display font-bold text-lg tracking-wide hidden sm:block ${isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'}`}>
-            SL Property
+            Subhalaxmi Property
           </span>
         </a>
 

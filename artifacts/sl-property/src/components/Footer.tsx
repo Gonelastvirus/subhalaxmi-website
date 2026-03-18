@@ -21,7 +21,7 @@ export function Footer() {
                 />
               </div>
               <span className="font-display font-bold text-2xl text-foreground">
-                SL Property
+                Subhalaxmi Property
               </span>
             </div>
             <p className="text-muted-foreground text-lg mb-8 max-w-md">

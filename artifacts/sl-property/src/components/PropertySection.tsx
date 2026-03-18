@@ -73,10 +73,97 @@ export function PropertySection() {
                 className="bg-transparent text-foreground/80 font-medium px-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-primary/20 hover:bg-secondary transition-colors cursor-pointer"
               >
                 <option value="">All Districts</option>
-                <option value="Kathmandu">Kathmandu</option>
-                <option value="Lalitpur">Lalitpur</option>
-                <option value="Bhaktapur">Bhaktapur</option>
-                <option value="Pokhara">Pokhara</option>
+                <optgroup label="Koshi Province">
+                  <option value="Taplejung">Taplejung</option>
+                  <option value="Panchthar">Panchthar</option>
+                  <option value="Ilam">Ilam</option>
+                  <option value="Jhapa">Jhapa</option>
+                  <option value="Morang">Morang</option>
+                  <option value="Sunsari">Sunsari</option>
+                  <option value="Dhankuta">Dhankuta</option>
+                  <option value="Terhathum">Terhathum</option>
+                  <option value="Sankhuwasabha">Sankhuwasabha</option>
+                  <option value="Bhojpur">Bhojpur</option>
+                  <option value="Solukhumbu">Solukhumbu</option>
+                  <option value="Okhaldhunga">Okhaldhunga</option>
+                  <option value="Khotang">Khotang</option>
+                  <option value="Udayapur">Udayapur</option>
+                </optgroup>
+                <optgroup label="Madhesh Province">
+                  <option value="Saptari">Saptari</option>
+                  <option value="Siraha">Siraha</option>
+                  <option value="Dhanusha">Dhanusha</option>
+                  <option value="Mahottari">Mahottari</option>
+                  <option value="Sarlahi">Sarlahi</option>
+                  <option value="Rautahat">Rautahat</option>
+                  <option value="Bara">Bara</option>
+                  <option value="Parsa">Parsa</option>
+                </optgroup>
+                <optgroup label="Bagmati Province">
+                  <option value="Sindhupalachok">Sindhupalachok</option>
+                  <option value="Kavrepalanchok">Kavrepalanchok</option>
+                  <option value="Lalitpur">Lalitpur</option>
+                  <option value="Bhaktapur">Bhaktapur</option>
+                  <option value="Kathmandu">Kathmandu</option>
+                  <option value="Nuwakot">Nuwakot</option>
+                  <option value="Rasuwa">Rasuwa</option>
+                  <option value="Dhading">Dhading</option>
+                  <option value="Makwanpur">Makwanpur</option>
+                  <option value="Chitwan">Chitwan</option>
+                  <option value="Sindhuli">Sindhuli</option>
+                  <option value="Ramechhap">Ramechhap</option>
+                  <option value="Dolakha">Dolakha</option>
+                </optgroup>
+                <optgroup label="Gandaki Province">
+                  <option value="Gorkha">Gorkha</option>
+                  <option value="Lamjung">Lamjung</option>
+                  <option value="Tanahun">Tanahun</option>
+                  <option value="Syangja">Syangja</option>
+                  <option value="Kaski">Kaski</option>
+                  <option value="Manang">Manang</option>
+                  <option value="Mustang">Mustang</option>
+                  <option value="Myagdi">Myagdi</option>
+                  <option value="Parbat">Parbat</option>
+                  <option value="Baglung">Baglung</option>
+                  <option value="Nawalpur">Nawalpur</option>
+                </optgroup>
+                <optgroup label="Lumbini Province">
+                  <option value="Rupandehi">Rupandehi</option>
+                  <option value="Kapilvastu">Kapilvastu</option>
+                  <option value="Nawalparasi">Nawalparasi</option>
+                  <option value="Palpa">Palpa</option>
+                  <option value="Arghakhanchi">Arghakhanchi</option>
+                  <option value="Gulmi">Gulmi</option>
+                  <option value="Pyuthan">Pyuthan</option>
+                  <option value="Rolpa">Rolpa</option>
+                  <option value="Rukum East">Rukum East</option>
+                  <option value="Dang">Dang</option>
+                  <option value="Banke">Banke</option>
+                  <option value="Bardiya">Bardiya</option>
+                </optgroup>
+                <optgroup label="Karnali Province">
+                  <option value="Dolpa">Dolpa</option>
+                  <option value="Humla">Humla</option>
+                  <option value="Jumla">Jumla</option>
+                  <option value="Kalikot">Kalikot</option>
+                  <option value="Mugu">Mugu</option>
+                  <option value="Surkhet">Surkhet</option>
+                  <option value="Dailekh">Dailekh</option>
+                  <option value="Jajarkot">Jajarkot</option>
+                  <option value="Rukum West">Rukum West</option>
+                  <option value="Salyan">Salyan</option>
+                </optgroup>
+                <optgroup label="Sudurpashchim Province">
+                  <option value="Bajura">Bajura</option>
+                  <option value="Bajhang">Bajhang</option>
+                  <option value="Achham">Achham</option>
+                  <option value="Doti">Doti</option>
+                  <option value="Dadeldhura">Dadeldhura</option>
+                  <option value="Baitadi">Baitadi</option>
+                  <option value="Darchula">Darchula</option>
+                  <option value="Kanchanpur">Kanchanpur</option>
+                  <option value="Kailali">Kailali</option>
+                </optgroup>
               </select>
             </div>
           </div>

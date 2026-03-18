@@ -24,7 +24,7 @@ export function Hero() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary-foreground font-medium text-sm mb-6 shadow-[0_0_15px_rgba(200,150,50,0.3)]">
-              Leading Real Estate in Nepal
+              🏔️ नेपालको भरपर्दो सम्पत्ति प्लेटफर्म | Your Trusted Property Platform
             </span>
           </motion.div>
 

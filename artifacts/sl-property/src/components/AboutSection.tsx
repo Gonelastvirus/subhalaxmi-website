@@ -24,7 +24,7 @@ export function AboutSection() {
             <div>
               <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">Building Nepal's Future</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Subhalaxmi Property & Construction has been a cornerstone of reliable real estate and quality construction since {data.establishedYear}. We bridge the gap between dreamers and their dream properties.
+                Subhalaxmi Property & Construction is a growing platform connecting people with properties and skilled construction professionals across Nepal — from the mountains of Koshi to the plains of Sudurpashchim.
               </p>
             </div>
 
