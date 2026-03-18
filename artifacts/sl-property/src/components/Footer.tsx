@@ -66,7 +66,8 @@ export function Footer() {
             <p className="text-muted-foreground mb-4">Download our app for the full experience.</p>
             <a 
               href={APK_URL}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-primary font-bold hover:underline"
             >
               Download APK <ArrowRight className="w-4 h-4" />

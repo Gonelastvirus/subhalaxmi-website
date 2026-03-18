@@ -69,6 +69,8 @@ export function DownloadModal() {
                 <a
                   href={APK_URL}
                   download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setTimeout(closeModal, 500)}
                   className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl font-semibold text-primary-foreground bg-gradient-to-r from-primary to-yellow-500 shadow-lg shadow-primary/30 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
                 >

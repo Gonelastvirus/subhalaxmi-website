@@ -37,7 +37,8 @@ export function DownloadCTA() {
 
             <a
               href={APK_URL}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-bold text-lg text-primary-foreground bg-primary shadow-[0_0_40px_rgba(218,165,32,0.4)] hover:shadow-[0_0_60px_rgba(218,165,32,0.6)] hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
             >
               <Download className="w-6 h-6" />
