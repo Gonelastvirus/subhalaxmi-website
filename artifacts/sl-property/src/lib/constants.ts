@@ -1,4 +1,4 @@
-export const APK_URL = "https://github.com/Gonelastvirus/subhalaxmi-apk/releases/download/V1/Subhalaxmi_propert.Construction.apk";
+export const APK_URL = "https://github.com/Gonelastvirus/subhalaxmi-apk/releases/download/V1/sl.property.construction.apk";
 export const COMPANY_NAME = "Subhalaxmi Property & Construction";
 
 export const formatCurrency = (amount: number) => {
